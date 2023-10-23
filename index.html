@@ -7,10 +7,231 @@
     <title>Used Car Sales Interface</title>
 </head>
 <body>
-    <div id="app">
-        <!-- Car listings will be displayed here -->
+    <div class="container">
+        <h1>Used Car Listings</h1>
+        <div class="filter-container">
+            <h2>Filter Options:</h2>
+            <div class="filter-section">
+                <label class="filter-label" for="minYear">Min. Car Year:</label>
+                <input type="number" id="minYear" class="filter-input" placeholder="e.g. 2000">
+                <label class="filter-label" for "maxYear">Max. Car Year:</label>
+                <input type="number" id="maxYear" class="filter-input" placeholder="e.g. 2022">
+            </div>
+            <div class="filter-section">
+                <label class="filter-label" for="make">Car Make:</label>
+                <select id="make" class="filter-select">
+                    <option value="All">All</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Volkswagon">Volkswagon</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Subaru">Subaru</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="Kia">Kia</option>
+                    <option value="Dodge">Dodge</option>
+                    <option value="Cadillac">Cadillac</option>
+                    <option value="Jaguar">Jaguar</option>
+                    <option value="Tesla">Tesla</option>
+                    <option value="Porche">Porche</option>
+                    <option value="Lexus">Lexus</option>
+                    <option value="BMW">BMW</option>
+                    <!-- Add more make options here -->
+                </select>
+            </div>
+            <div class="filter-section">
+                <label class="filter-label" for="maxMileage">Max. Car Mileage:</label>
+                <input type="number" id="maxMileage" class="filter-input" placeholder="e.g. 50000">
+            </div>
+            <div class="filter-section">
+                <label class="filter-label" for="maxPrice">Max. Car Price:</label>
+                <input type="number" id="maxPrice" class="filter-input" placeholder="e.g. 25000">
+            </div>
+            <div class="filter-section">
+                <label class="filter-label">Car Color:</label>
+                <input type="checkbox" id="colorSilver" class="filter-checkbox" value="Silver">
+                <label for="colorSilver">Silver</label>
+                <input type="checkbox" id="colorWhite" class="filter-checkbox" value="White">
+                <label for="colorWhite">White</label>
+                <input type="checkbox" id="colorBlack" class="filter-checkbox" value="Black">
+                <label for="colorBlack">Black</label>
+                <input type="checkbox" id="colorRed" class="filter-checkbox" value="Red">
+                <label for="colorRed">Red</label>
+                <input type="checkbox" id="colorBlue" class="filter-checkbox" value="Blue">
+                <label for="colorBlue">Blue</label>
+                <input type="checkbox" id="colorGray" class="filter-checkbox" value="Gray">
+                <label for="colorGray">Gray</label>
+                <input type="checkbox" id="colorGreen" class="filter-checkbox" value="Green">
+                <label for="colorGreen">Green</label>
+                <!-- Add more color options here -->
+            </div>
+            <button id="filterButton" class="filter-button">Apply Filters</button>
+        </div>
+        <div id="app">
+            <!-- Car listings will be displayed here -->
+        </div>
     </div>
-
+    <script>
+        window.usedCarsData = [
+            {
+                year: 2018,
+                make: "Toyota",
+                model: "Camry",
+                mileage: 30000,
+                price: 18000,
+                color: "Silver",
+                gasMileage: "25 mpg city, 35 mpg highway",
+            },
+            {
+                year: 2016,
+                make: "Honda",
+                model: "Civic",
+                mileage: 45000,
+                price: 14000,
+                color: "White",
+                gasMileage: "30 mpg city, 40 mpg highway",
+            },
+            {
+                year: 2017,
+                make: "Ford",
+                model: "Fusion",
+                mileage: 35000,
+                price: 16000,
+                color: "Black",
+                gasMileage: "28 mpg city, 38 mpg highway",
+            },
+            {
+                year: 2019,
+                make: "Nissan",
+                model: "Altima",
+                mileage: 25000,
+                price: 17000,
+                color: "Blue",
+                gasMileage: "27 mpg city, 36 mpg highway",
+            },
+            {
+                year: 2015,
+                make: "Chevrolet",
+                model: "Malibu",
+                mileage: 50000,
+                price: 12000,
+                color: "Red",
+                gasMileage: "25 mpg city, 37 mpg highway",
+            },
+            // Additional entries:
+            {
+                year: 2016,
+                make: "Volkswagen",
+                model: "Passat",
+                mileage: 40000,
+                price: 15000,
+                color: "Gray",
+                gasMileage: "29 mpg city, 40 mpg highway",
+            },
+            {
+                year: 2020,
+                make: "Hyundai",
+                model: "Elantra",
+                mileage: 22000,
+                price: 16000,
+                color: "Silver",
+                gasMileage: "30 mpg city, 41 mpg highway",
+            },
+            {
+                year: 2014,
+                make: "Subaru",
+                model: "Outback",
+                mileage: 60000,
+                price: 14000,
+                color: "Green",
+                gasMileage: "22 mpg city, 30 mpg highway",
+            },
+            {
+                year: 2017,
+                make: "Mazda",
+                model: "CX-5",
+                mileage: 32000,
+                price: 19000,
+                color: "Blue",
+                gasMileage: "24 mpg city, 31 mpg highway",
+            },
+            {
+                year: 2018,
+                make: "Kia",
+                model: "Sorento",
+                mileage: 28000,
+                price: 17000,
+                color: "White",
+                gasMileage: "22 mpg city, 29 mpg highway",
+            },
+            // Five more entries:
+            {
+                year: 2015,
+                make: "Dodge",
+                model: "Challenger",
+                mileage: 30000,
+                price: 24000,
+                color: "Black",
+                gasMileage: "19 mpg city, 30 mpg highway",
+            },
+            {
+                year: 2017,
+                make: "Cadillac",
+                model: "XT5",
+                mileage: 28000,
+                price: 32000,
+                color: "Red",
+                gasMileage: "19 mpg city, 27 mpg highway",
+            },
+            {
+                year: 2018,
+                make: "Jaguar",
+                model: "F-PACE",
+                mileage: 26000,
+                price: 38000,
+                color: "Blue",
+                gasMileage: "18 mpg city, 23 mpg highway",
+            },
+            {
+                year: 2019,
+                make: "Tesla",
+                model: "Model S",
+                mileage: 18000,
+                price: 55000,
+                color: "Black",
+                gasMileage: "Electric (370 miles per charge)",
+            },
+            {
+                year: 2020,
+                make: "Porsche",
+                model: "Cayenne",
+                mileage: 22000,
+                price: 68000,
+                color: "White",
+                gasMileage: "20 mpg city, 26 mpg highway",
+            },
+            {
+                year: 2017,
+                make: "Lexus",
+                model: "ES",
+                mileage: 29000,
+                price: 26000,
+                color: "White",
+                gasMileage: "21 mpg city, 30 mpg highway",
+            },
+            {
+                year: 2016,
+                make: "BMW",
+                model: "5 Series",
+                mileage: 32000,
+                price: 27000,
+                color: "Black",
+                gasMileage: "23 mpg city, 34 mpg highway",
+            },
+        ];
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
