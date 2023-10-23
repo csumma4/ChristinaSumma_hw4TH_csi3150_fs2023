@@ -1,4 +1,9 @@
+// usedCars.js
 const usedCars = [
+  // Your array of car data here
+];
+
+window.usedCarsData = usedCars; // Export the data as a global variable
   {
     year: 2018,
     make: "Toyota",
