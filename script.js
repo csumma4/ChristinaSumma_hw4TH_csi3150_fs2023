@@ -1,41 +1,58 @@
-// Import the usedCars data
-import usedCars from './usedCars.js';
+// script.js
+const usedCars = window.usedCarsData;
+
+const app = document.getElementById('app');
+const filterButton = document.getElementById('filterButton');
 
 // Function to render the car listings
-const renderCarListings = (cars) => {
-    const app = document.getElementById('app');
+function renderCarListings(cars) {
     app.innerHTML = ''; // Clear the previous listings
 
     cars.forEach(car => {
-        // Create HTML elements for each car listing and append them to the app
-        // Customize this part to display the car information as per your design
-        const carElement = document.createElement('div');
-        carElement.classList.add('car-listing');
-        carElement.innerHTML = `
-            <p>Year: ${car.year}</p>
-            <p>Make: ${car.make}</p>
-            <p>Model: ${car.model}</p>
-            <p>Mileage: ${car.mileage}</p>
-            <p>Price: ${car.price}</p>
+        // Create a div for each car listing
+        const carDiv = document.createElement('div');
+        carDiv.classList.add('car-listing');
+
+        // Create the HTML content for the car listing
+        carDiv.innerHTML = `
+            <h2>${car.year} ${car.make} ${car.model}</h2>
+            <p>Mileage: ${car.mileage} miles</p>
+            <p>Price: $${car.price}</p>
             <p>Color: ${car.color}</p>
             <p>Gas Mileage: ${car.gasMileage}</p>
         `;
-        app.appendChild(carElement);
+
+        // Append the car listing to the app
+        app.appendChild(carDiv);
     });
-};
+}
 
 // Initial render of all car listings
 renderCarListings(usedCars);
 
-// Function to filter the car listings based on user input
-const filterCars = (minYear, maxYear, selectedMakes, maxMileage, maxPrice, selectedColors) => {
-    // Add your filtering logic here
-    // Update the renderCarListings function to render the filtered cars
-};
+// Add event listener for the "Apply Filters" button
+filterButton.addEventListener('click', () => {
+    const filteredCars = filterCars(usedCars);
+    renderCarListings(filteredCars);
+});
 
-// Add event listeners to the filter elements and call the filterCars function accordingly
-// Example: 
-// document.getElementById('minYear').addEventListener('change', (event) => {
-//     const minYear = event.target.value;
-//     filterCars(minYear, ...);
-// });
+// Function to filter the car listings
+function filterCars(cars) {
+    const minYear = parseInt(document.getElementById('minYear').value) || 0;
+    const maxYear = parseInt(document.getElementById('maxYear').value) || Infinity;
+    const make = document.getElementById('make').value;
+    const maxMileage = parseInt(document.getElementById('maxMileage').value) || Infinity;
+    const maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
+    const selectedColors = Array.from(document.querySelectorAll('.filter-checkbox:checked')).map(input => input.value);
+
+    const filteredCars = cars.filter(car => {
+        return car.year >= minYear
+            && car.year <= maxYear
+            && (make === 'All' || car.make === make)
+            && car.mileage <= maxMileage
+            && car.price <= maxPrice
+            && (selectedColors.length === 0 || selectedColors.includes(car.color));
+    });
+
+    return filteredCars;
+}
