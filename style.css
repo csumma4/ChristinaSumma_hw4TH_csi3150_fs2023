@@ -16,6 +16,55 @@ body {
     padding: 20px;
 }
 
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.filter-container {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.filter-section {
+    margin-bottom: 10px;
+}
+
+.filter-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.filter-input,
+.filter-select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.filter-checkbox {
+    margin-right: 5px;
+}
+
+.filter-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-button:hover {
+    background-color: #0056b3;
+}
+
+/* Car listing styles */
 .car-listing {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -46,55 +95,6 @@ body {
 .car-details p {
     font-size: 16px;
     margin: 5px 0;
-}
-
-.filter-container {
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 20px;
-}
-
-.filter-container h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.filter-section {
-    margin-bottom: 10px;
-}
-
-.filter-label {
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.filter-input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100px;
-}
-
-.filter-select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.filter-button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.filter-button:hover {
-    background-color: #0056b3;
 }
 
 /* Hover effect */
